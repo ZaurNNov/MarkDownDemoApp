@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "cdmarkdownkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chrisdhaan/CDMarkdownKit",
+      "state" : {
+        "revision" : "b08981016f9406eb6d18150a3c8caa4288983d2e",
+        "version" : "2.5.1"
+      }
+    }
+  ],
+  "version" : 2
+}
