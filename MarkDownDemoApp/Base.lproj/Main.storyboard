@@ -20,42 +20,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMj-MR-YIm" userLabel="textContainerView">
                                 <rect key="frame" x="20" y="117.33333333333331" width="353" height="640.66666666666674"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTX-mB-Efp" userLabel="previewLabel">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ad7-zN-7Fs" userLabel="textView">
                                         <rect key="frame" x="20" y="20" width="313" height="600.66666666666663"/>
-                                        <mutableString key="text"># Header 1
-        ## Header 2
-        ### Header 3
-        \n
-        - Some text
-        --- Some text with in dept
-        
-        first paragraph
-        second paragraph
-        
-        [x] some x
-        [ ] some without
-        - [ x ] some x
-        - [ x ] some without
-        \n\n
-        This is some **bold** text.
-        This is some *italic* text.
-        This is some `inline code`.
-        This is a custom @regex rule.
-        \n\n\n
-        This is a custom [google URL](https://google.com).
-        This is an image 1 ![first image description](https://deadline.com/wp-content/uploads/2022/03/Google-Apple-Facebook-Amazon.jpg)
-        This is an image 2 ![second image description](https://www.tuttotech.net/wp-content/uploads/2019/07/A02CF387-E381-4C45-9D2D-55FF49D8148C.jpeg).</mutableString>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nTX-mB-Efp" secondAttribute="bottom" constant="20" symbolic="YES" id="FSX-PO-6cb"/>
-                                    <constraint firstItem="nTX-mB-Efp" firstAttribute="leading" secondItem="eMj-MR-YIm" secondAttribute="leading" constant="20" symbolic="YES" id="P25-PU-F8K"/>
-                                    <constraint firstItem="nTX-mB-Efp" firstAttribute="top" secondItem="eMj-MR-YIm" secondAttribute="top" constant="20" symbolic="YES" id="yEU-sW-Phi"/>
-                                    <constraint firstAttribute="trailing" secondItem="nTX-mB-Efp" secondAttribute="trailing" constant="20" symbolic="YES" id="ydq-ip-YPs"/>
+                                    <constraint firstAttribute="bottom" secondItem="ad7-zN-7Fs" secondAttribute="bottom" constant="20" symbolic="YES" id="QcY-0v-XsZ"/>
+                                    <constraint firstItem="ad7-zN-7Fs" firstAttribute="top" secondItem="eMj-MR-YIm" secondAttribute="top" constant="20" symbolic="YES" id="Tp5-Yx-fnw"/>
+                                    <constraint firstAttribute="trailing" secondItem="ad7-zN-7Fs" secondAttribute="trailing" constant="20" symbolic="YES" id="YpV-Bl-rYF"/>
+                                    <constraint firstItem="ad7-zN-7Fs" firstAttribute="leading" secondItem="eMj-MR-YIm" secondAttribute="leading" constant="20" symbolic="YES" id="uO9-1V-adB"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8n-q0-asC" userLabel="headView">
@@ -106,10 +85,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="previewLabel" destination="nTX-mB-Efp" id="qT7-pT-5f7"/>
                         <outlet property="showEdited" destination="JbA-JX-OXY" id="z0u-u9-tum"/>
                         <outlet property="showPreview" destination="kbr-SD-Z5W" id="Q0r-Ki-Axy"/>
                         <outlet property="textContainerView" destination="eMj-MR-YIm" id="XFO-3J-27R"/>
+                        <outlet property="textView" destination="ad7-zN-7Fs" id="cxZ-TE-pYJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -118,6 +97,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

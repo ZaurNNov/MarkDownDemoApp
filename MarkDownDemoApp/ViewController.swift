@@ -11,7 +11,7 @@ import CDMarkdownKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var textContainerView: UIView!
-    @IBOutlet weak var previewLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var showEdited: UIButton!
     @IBAction func showEditedAction(_ sender: UIButton) {
@@ -63,13 +63,13 @@ class ViewController: UIViewController {
             textContainerView.addSubview(editor)
         }
         attributedString = nil
-        previewLabel.text = nil
-        previewLabel.isUserInteractionEnabled = false // нечего тыкать в превью текст
+        textView.text = nil
+        textView.isUserInteractionEnabled = false // нечего тыкать в превью текст
     }
     
     private func showEditedText() {
         attributedString = nil
-        previewLabel.text = nil
+        textView.text = nil
         editor?.isUserInteractionEnabled = true
         editor?.text = string
         //        let testFile = Bundle.main.path(forResource: "tests", ofType: "md")
@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         // Parse markdown
         if attributedString == nil {
             attributedString = markdownParser?.parse(string)
-            previewLabel.attributedText = attributedString
+            textView.attributedText = attributedString
         }
     }
     
@@ -112,7 +112,7 @@ class ViewController: UIViewController {
         let boldFont = CDFont.systemFont(ofSize: 16, weight: .bold)
         let italicFont = CDFont.italicSystemFont(ofSize: 16)
         let fontColor = CDColor(named: "textColor") ?? .label
-        var paragraphStyle = NSMutableParagraphStyle()
+        let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 0
         paragraphStyle.lineSpacing = CGFloat(4)
         
