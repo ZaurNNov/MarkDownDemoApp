@@ -11,7 +11,7 @@ import CDMarkdownKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var textContainerView: UIView!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: CDMarkdownTextView!
     
     @IBOutlet weak var showEdited: UIButton!
     @IBAction func showEditedAction(_ sender: UIButton) {
@@ -27,30 +27,32 @@ class ViewController: UIViewController {
     // Create parser
     var markdownParser: CDMarkdownParser?
 
-    var string: String =
-        """
-        # Header 1
-        ## Header 2
-        ### Header 3
-        \n
-        - Some text
-        --- Some text with in dept
-        
-        first paragraph
-        second paragraph
-        
-        [x] some x
-        [ ] some without
-        - [ x ] some x
-        - [ x ] some without
-        \n\n
-        This is some **bold** text.
-        This is some *italic* text.
-        This is some `inline code`.
-        This is a custom @regex rule.
-        \n\n\n
-        This is a custom [google URL](https://google.com).
-        """
+    var editedString: String?
+    var inputString: String =
+    """
+    *italic* or _italic_
+    **bold** or __bold__
+    
+    # Header 1
+    ## Header 2
+    ### Header 3
+    #### Header 4
+    ##### Header 5
+    ###### Header 6
+    
+    > Quote
+    >> In Depth
+    
+    * List
+    - List
+    + List
+    
+    `code or syntax`
+                    
+    [Link](url)
+    ![Image](url)
+    """
+    
     var attributedString: NSAttributedString?
     
     override func viewDidLoad() {
@@ -64,14 +66,14 @@ class ViewController: UIViewController {
         }
         attributedString = nil
         textView.text = nil
-        textView.isUserInteractionEnabled = false // нечего тыкать в превью текст
+        textView.isEditable = false
     }
     
     private func showEditedText() {
         attributedString = nil
         textView.text = nil
         editor?.isUserInteractionEnabled = true
-        editor?.text = string
+        editor?.text = editedString?.notEmpty() ?? inputString
         //        let testFile = Bundle.main.path(forResource: "tests", ofType: "md")
         //        do {
         //            let text = try String(contentsOfFile: testFile!)
@@ -82,17 +84,14 @@ class ViewController: UIViewController {
     }
     
     private func showPreviewText() {
-        editor?.text = nil
-        editor?.isUserInteractionEnabled = false
-
-        /// вместо использования лейбла можно использовать текствью либо текствью из либы
-        /// previewTextView: CDMarkdownTextView!
-        /// тогда можно тонко настравать этот текствью, либо markdownParser как в этом примере
         // Parse markdown
         if attributedString == nil {
-            attributedString = markdownParser?.parse(string)
+            attributedString = markdownParser?.parse(editedString ?? inputString)
             textView.attributedText = attributedString
         }
+        
+        editor?.text = nil
+        editor?.isUserInteractionEnabled = false
     }
     
     private func tuneMarkdownParser() {
@@ -122,4 +121,21 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextViewDelegate {
     
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if textView == editor {
+            editedString = textView.text
+        }
+    }
+}
+
+/// Strind additions
+extension String {
+    func notEmpty() -> String? {
+        return self != "" ? self : nil
+    }
+    
+    func trimSpacesAndNotEmpty() -> String? {
+        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.notEmpty()
+    }
 }

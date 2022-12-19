@@ -7,49 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DE6D8DCB-1E2A-4E72-9C43-69A4890D9205"
+            uuid = "45C3BCFB-B0E0-4CB2-B0BE-E35FF6DF4FD3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MarkDownDemoApp/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "showPreviewText()"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "showEditedText()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DE6D8DCB-1E2A-4E72-9C43-69A4890D9205 - 6af675f97fed04bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MarkDownDemoApp.ViewController.showPreviewText() -&gt; ()"
-                  moduleName = "MarkDownDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zg/Developer/Source/MarkDownDemoApp/MarkDownDemoApp/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  uuid = "DE6D8DCB-1E2A-4E72-9C43-69A4890D9205 - 6af675f97fed04bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MarkDownDemoApp.ViewController.showPreviewText() -&gt; ()"
-                  moduleName = "MarkDownDemoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zg/Developer/Source/MarkDownDemoApp/MarkDownDemoApp/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "128">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
