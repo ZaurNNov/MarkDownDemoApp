@@ -55,6 +55,19 @@ class ViewController: UIViewController {
     
     var attributedString: NSAttributedString?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tuneMarkdownParser()
@@ -67,6 +80,27 @@ class ViewController: UIViewController {
         attributedString = nil
         textView.text = nil
         textView.isEditable = false
+    }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            editor?.contentInset = .zero
+        } else {
+            editor?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        
+        if let editorContentInset = editor?.contentInset {
+            editor?.scrollIndicatorInsets = editorContentInset
+        }
+        
+        if let selectedRange = editor?.selectedRange {
+            editor?.scrollRangeToVisible(selectedRange)
+        }
     }
     
     private func showEditedText() {
